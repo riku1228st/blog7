@@ -1,0 +1,26 @@
+<% provide(:title, "Home") %>
+<% provide(:home, "current") %>
+<br>
+<p id="notice"><%= notice %></p>
+<h1>ようこそAmiverseへ</h1>
+<p>現在βテスト中です。不具合があれば連絡お願いします。</p>
+<p>横幅281px以上の最新chromeブラウザでの動作は保障します。</p>
+<%= link_to 'ブログ一覧', articles_path %>
+<%= link_to 'webマップ(dynmap)', 'http://amiverse.net/dynmap' %>
+<%= link_to 'webマップ(bluemap)', 'http://amiverse.net/bluemap' %>
+
+ <br/>
+<iframe src="https://mc.erinn.biz/intl/polling.html.php?server_addr=amiverse.net" style="width:80%;height:60px;border:none;"></iframe>
+<br/>
+<a href="http://tt0.link/minecraft/"><img src="http://tt0.link/minecraft/others/servercheck/img/default.php?ip=amiverse.net&port=25565" style="width:80%;"></a>
+<br/>
+<a href="https://minecraft.jp/servers/amiverse.net"><img src="https://minecraft.jp/servers/amiverse.net/banner/2/560x95.png" style="width:80%;"/></a>
+<br/>
+
+<% if user_signed_in? %>
+  <%= link_to 'プロフィール変更', edit_user_registration_path %>
+  <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+<% else %>
+  
+  <%= link_to 'ログイン', new_user_session_path %>
+<% end %>

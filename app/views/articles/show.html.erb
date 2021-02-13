@@ -1,0 +1,52 @@
+<% @id = @article.id %>
+<% provide(:meta, "") %>
+<% provide(:robots, "index,follow") %>
+<% provide(:url, "/articles/#@id" ) %>
+<% provide(:type, "article") %>
+<% provide(:card, "summary_large_image") %>
+<% provide(:twitter_site, "@sorata_toll") %>
+<% provide(:twitter_creater, "@sorata_toll") %>
+<% provide(:smn, @article.image_url(:content)) %>
+<% provide(:title, @article.title) %>
+<% provide(:subtitle, @article.subtitle) %>
+<% provide(:tag, @article.tag_list) %>
+<% provide(:blog, "current") %>
+<% provide(:top, "") %>
+
+<div class="blog-article entry-content">
+<main>
+  <div class="main-content">
+    <span class="time"><%= l @article.created_at %></span>
+    <span class="update"><%= l @article.updated_at %></span>
+    <br/>
+    <div class="tag-link">
+    <% @article.tag_list.each do |tag| %>
+      <a href="/articles/search?tag=">
+      <%= link_to articles_search_url(tag: tag) do %>
+      <span class="tags"><%= tag %></span>
+      <% end %>
+    <% end %>
+    </div>
+    <h6><%= @article.title %></h6>
+    <div class="smn">
+      <%= image_tag @article.image_url(:content) if @article.image.present? %>
+    </div>
+    <p><%= @article.subtitle %></p>
+    <div class="mkj">
+      <div id="toc">
+      </div>
+    </div>
+      <%= markdown(@article.content).html_safe %>
+
+<script>
+
+</script>
+
+    <p><%= @article.id %>記事目でした。</p>
+    <% if user_signed_in? %>
+    <%= link_to 'Edit', edit_article_path(@article) %> |
+    <% end %>
+    <%= link_to '戻る', articles_path %>
+  </div>
+</main>
+</div>

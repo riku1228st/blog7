@@ -1,0 +1,41 @@
+<% provide(:meta, "") %>
+<% provide(:robots, "index,follow") %>
+<% provide(:url, "/la/map") %>
+<% provide(:type, "website") %>
+<% provide(:card, "summary_large_image") %>
+<% provide(:twitter_site, "@sorata_toll") %>
+<% provide(:twitter_creater, "@sorata_toll") %>
+<% provide(:smn, "/assets/la/splatoon.png") %>
+<% provide(:title, "LA鯖-MAP") %>
+<% provide(:subtitle, "LA鯖のマップです。") %>
+<% provide(:tag, "LA鯖-マップ, LA-MAP") %>
+<% provide(:la, "current") %>
+<% provide(:map, "current") %>
+<main>
+  <div class="maincol">
+    <div class="main-content">
+      <h1>LA鯖-マップ</h1>
+      <h2>webマップとは</h2>
+      <p>LA鯖ではweb上からマインクラフトの世界をリアルタイムで見ることができるマップ機能を提供しています。</p>
+      <h2>マップの種類と特徴</h2>
+      <h3>DYNMAP</h3>
+      <p>dynmapは古くからマイクラ鯖で使われてきた王道のマップです。Googleマップに近い見た目で使いやすさ、機能性に優れています。
+      <a href="https://amiverse.net/dynmap1/">こちら</a>はLA鯖ロビーのdynmapです。</p>
+      <h3>BLUEMAP</h3>
+      <p>bluemapは最近使われ始めた高性能マップです。Googleストリートビューのように自由自在で、実際にマイクラをしているかのような完成度の高さです。
+      <a href="https://amiverse.net/bluemap1/">こちら</a>はLA鯖ロビーのbluemapです。</p>
+      <h2>両者の違いとは</h2>
+      <h3>自由度の違い</h3>
+      <p>dynmapはサーバー側の設定次第でレンダリングの角度や方角を設定することが出来ます。しかし、bluemapがある以上は真上視点以外の需要はあまりないと考えられます。
+      <br/>bluemapではweb上で3Dレンダリングをしているためどの角度から見ることもでき自由度に部がある一方で、近年需要が増えているモバイル端末からアクセスしてみるとまだまだ最適化が進んでおらず動作がもっさりとしていて自由さからは程遠い現状です。
+      <h3>レンダリングの種類</h3>
+      <p>信頼のdynmapには真上から描画したFlat、設定された方角、角度から描画されたSurfaceの他にCaveという描画があります。これは地下の洞窟などが透けて見えるようになるレントゲンのようなものです。大抵のサバイバルサーバーでは廃坑や要塞の攻略が容易になることを懸念してサーバー側の設定から削除されているのが殆どです。
+      LA鯖では後述するログイン機能を使うことで他の視点からのSurface、Caveなどを見ることができるようにしています。</p>
+      <h3>細かい機能</h3>
+      <p>やはりdynmapには機能が豊富にあります。例えば先ほど記述したログイン機能は鯖内コマンドで生成した鍵をweb上でマイクラアカウントと紐づけることでdynmapアカウント作成が出来、鯖によって設定は変わるのだがwebからチャットなんかもできるようになる。ユーザーの話をすれば右のサイドバーを開くとマップと一緒にプレイ中のユーザー一覧が表示されておりクリックするとそのユーザーの場所を見ることが出来たりもする。この追跡機能はbluemapにもマップ上のプレイヤーアイコンをクリックすることで追跡する機能はある。
+      他には両者ともであるが、他のプラグインと連携してWorldGuardなどの領域を表示させることも出来る。</p>
+      <h2>まとめ</h2>
+      <p>特にこだわりがないのであれば、PCからはBluemap、モバイル端末からはDynmap。マップの確認だけであれば、動作の軽快さが重要かと思われます。</p>
+    </div>
+  </div>
+</main>

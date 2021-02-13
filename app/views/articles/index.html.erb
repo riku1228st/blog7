@@ -1,0 +1,44 @@
+<% provide(:meta, "") %>
+<% provide(:robots, "index,follow") %>
+<% provide(:url, "/articles/index") %>
+<% provide(:type, "website") %>
+<% provide(:card, "summary_large_image") %>
+<% provide(:twitter_site, "@sorata_toll") %>
+<% provide(:twitter_creater, "@sorata_toll") %>
+<% provide(:smn, "/assets/la/splatoon.png") %>
+<% provide(:title, "ブログ一覧") %>
+<% provide(:subtitle, "記事の一覧です。ブログを書いています。") %>
+<% provide(:tag, "ブログ, blog") %>
+<% provide(:blog, "current") %>
+<% provide(:index, "current") %>
+<main>
+  <div class="maincol">
+    <div class="main-content">
+      <h1>記事の一覧</h1>
+      <% @articles.each do |article| %>
+        <%= link_to(article, {class: "article-a"}) do %>
+          <div class="article">
+            <div class="article-img">
+              <%= image_tag article.image_url(:content) if article.image.present? %>
+            </div>
+            <div class="article-about">
+              <h6><%= article.title %></h6>
+              <p class="time-tag">
+                <span class="time"><%= l article.created_at, format: :index %></span>
+                <span class="tag"><%= article.tag_list %></span>
+              </p>
+              <div class="article-text">
+                <p><%= article.subtitle %></p>
+              </div>
+            </div>
+            <% if user_signed_in? %>
+              <%= link_to 'Edit', edit_article_path(article) %>
+              <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+      <% if user_signed_in? %><%= link_to '記事を作成', new_article_path %><% end %>
+    </div>
+  </div>
+</main>

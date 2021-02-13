@@ -1,0 +1,111 @@
+<% provide(:meta, "") %>
+<% provide(:robots, "index,follow") %>
+<% provide(:url, "") %>
+<% provide(:type, "website") %>
+<% provide(:card, "summary_large_image") %>
+<% provide(:twitter_site, "@sorata_toll") %>
+<% provide(:twitter_creater, "@sorata_toll") %>
+<% provide(:smn, "/assets/la/splatoon.png") %>
+<% provide(:title, "トップ") %>
+<% provide(:subtitle, "Amiverse.netのトップページです。") %>
+<% provide(:tag, "top, home") %>
+<% provide(:home, "current") %>
+<% provide(:top, "current") %>
+<main>
+  <div class="maincol">
+    <div class="main-content">
+      <h1>ようこそAmiverseへ</h1>
+      <h2>ブログ</h2>
+      <h3>ブログを開始しました！！</h3>
+      <p>
+        現在公開テスト中です。不具合があれば連絡お願いします。<br/><br/>
+        横幅281px以上(GalaxyFoldはギリ無理くらい)の最新chromeブラウザでの動作は保障します。<br/><br/>
+        <%= link_to 'ブログ一覧', articles_path %>
+      </p><br/>
+      <h2>最新のニュース #news</h2>
+      <% if @news.present? %>
+        <% @news.each do |article| %>
+          <%= link_to(article, {class: "article-a"}) do %>
+            <div class="article">
+              <div class="article-img">
+                <%= image_tag article.image_url(:content) if article.image.present? %>
+              </div>
+              <div class="article-about">
+                <h6><%= article.title %></h6>
+                <p class="time-tag">
+                  <span class="time"><%= l article.created_at, format: :index %></span>
+                  <span class="tag"><%= article.tag_list %></span>
+                </p>
+                <div class="article-text">
+                    <p><%= article.subtitle %></p>
+                </div>
+              </div>
+              <% if user_signed_in? %>
+                <%= link_to 'Edit', edit_article_path(article) %>
+                <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+      <h2>LA鯖のニュース #la_news</h2>
+      <% if @lainfo.online %>
+      <p>
+        サーバーは現在<span style="color: rgb(15, 255, 95);">●オンライン</span>で<%= @lainfo.current_players %>人がプレイ中です。
+      </p>
+      <% else %>
+      <p>
+        サーバーは現在<span style="color: rgb(255, 27, 90);">×オフライン</span>です。
+      </p>
+		  <% end %>
+      <% if @la_news.present? %>
+        <% @la_news.each do |article| %>
+          <%= link_to(article, {class: "article-a"}) do %>
+            <div class="article">
+              <div class="article-img">
+                <%= image_tag article.image_url(:content) if article.image.present? %>
+              </div>
+              <div class="article-about">
+                <h6><%= article.title %></h6>
+                <p class="time-tag">
+                  <span class="time"><%= l article.created_at, format: :index %></span>
+                  <span class="tag"><%= article.tag_list %></span>
+                </p>
+                <div class="article-text">
+                    <p><%= article.subtitle %></p>
+                </div>
+              </div>
+              <% if user_signed_in? %>
+                <%= link_to 'Edit', edit_article_path(article) %>
+                <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="sub-content">
+      <div class="sub-container">
+        <h1>サブコンテンツ</h1>
+        <div class="youtube-scarlia">
+            <div class="y-movie">
+              動画見て
+              <iframe width="100%" height="auto" src="https://www.youtube.com/embed/TiW7ytbvIC4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="y-movie">
+              こっちも
+              <iframe width="100%" height="auto" src="https://www.youtube.com/embed/s8vTBLwVFuI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+        <div class="twitter-st">
+            フォローして
+            <a href="https://twitter.com/sorata_toll?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @sorata_toll</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <br />
+            連絡など
+            <a href="https://twitter.com/intent/tweet?screen_name=sorata_toll&ref_src=twsrc%5Etfw" class="twitter-mention-button" data-show-count="false">Tweet to @sorata_toll</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <a class="twitter-timeline" data-lang="ja" data-height="300" data-theme="dark" href="https://twitter.com/sorata_toll?ref_src=twsrc%5Etfw">Tweets by sorata_toll</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

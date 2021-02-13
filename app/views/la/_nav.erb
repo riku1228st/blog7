@@ -1,0 +1,41 @@
+    <nav>
+      <div class="nav-list">
+        <ul>
+          <a href="/la" style="color: #3EE7EA;" class="<%= yield(:top) %> list-5">
+            <li>
+              <%= image_tag "nav-list/top.svg", :width => "47", :height => "47"  %><br/>TOP
+            </li>
+          </a>
+          <a href="/la/first" style="color: #FFAC38;" class="<%= yield(:first) %> list-6">
+            <li>
+              <%= image_tag "nav-list/first.svg", :width => "43", :height => "43"  %><br/>初めての方へ
+            </li>
+          </a>
+          <a href="/la/news" style="color: #6093FB;" class="<%= yield(:news) %> list-7">
+            <li>
+              <%= image_tag "nav-list/news.svg", :width => "43", :height => "43"  %><br/>最新情報
+            </li>
+          </a>
+          <a href="/la/info" style="color: #FF7284;" class="<%= yield(:info) %> list-8">
+            <li>
+              <%= image_tag "nav-list/info.svg", :width => "43", :height => "43"  %><br/>運営情報
+            </li>
+          </a>
+          <a href="/la/calender" style="color: #7ACC2B;" class="<%= yield(:calender) %> list-9">
+            <li>
+              <%= image_tag "nav-list/calendar.svg", :width => "43", :height => "43"  %><br/>カレンダー
+            </li>
+          </a>
+          <a href="/la/map" style="color: #BA68FF;" class="<%= yield(:map) %> list-10">
+            <li>
+              <%= image_tag "nav-list/map.svg", :width => "43", :height => "43"  %><br/>マップ
+            </li>
+          </a>
+          <a href="/la/search" style="color: #FF70BF;" class="<%= yield(:search) %> list-11">
+            <li>
+              <%= image_tag "nav-list/search.svg", :width => "43", :height => "43"  %><br/>検索
+            </li>
+          </a>
+        </ul>
+      </div>
+    </nav>

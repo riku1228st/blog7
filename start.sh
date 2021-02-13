@@ -1,0 +1,1 @@
+unicorn_rails -c /home/scarlia/blog7/config/unicorn.conf.rb -D -E production

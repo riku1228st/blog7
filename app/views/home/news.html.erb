@@ -1,0 +1,49 @@
+<% provide(:meta, "") %>
+<% provide(:robots, "index,follow") %>
+<% provide(:url, "/first/news") %>
+<% provide(:type, "website") %>
+<% provide(:card, "summary_large_image") %>
+<% provide(:twitter_site, "@sorata_toll") %>
+<% provide(:twitter_creater, "@sorata_toll") %>
+<% provide(:smn, "/assets/la/splatoon.png") %>
+<% provide(:title, "ニュース") %>
+<% provide(:subtitle, "Amiverse.netのニュースページです。") %>
+<% provide(:tag, "news, ニュース") %>
+<% provide(:home, "current") %>
+<% provide(:news, "current") %>
+<main>
+  <div class="maincol">
+    <div class="main-content">
+    <h1>Amiverseニュース</h1>
+    <h2>最新</h2>
+    <h3>Amiverseウェブサイトが公開されました</h3>
+      <p>2021年2月、ついに念願のブログを立ち上げることができました。ほかのページにもあるように私の趣味をここに記していく感じとなります。末永くよろしくお願いします。</p>
+    <h2>全ニュース記事 #news</h2>
+    <% if @news.present? %>
+        <% @news.each do |article| %>
+          <%= link_to(article, {class: "article-a"}) do %>
+            <div class="article">
+              <div class="article-img">
+                <%= image_tag article.image_url(:content) if article.image.present? %>
+              </div>
+              <div class="article-about">
+                <h6><%= article.title %></h6>
+                <p class="time-tag">
+                  <span class="time"><%= l article.created_at, format: :index %></span>
+                  <span class="tag"><%= article.tag_list %></span>
+                </p>
+                <div class="article-text">
+                    <p><%= article.subtitle %></p>
+                </div>
+              </div>
+              <% if user_signed_in? %>
+                <%= link_to 'Edit', edit_article_path(article) %>
+                <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
+    <% end %>
+    </div>
+  </div>
+</main>

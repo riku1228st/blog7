@@ -1,0 +1,61 @@
+<% provide(:title, "検索") %>
+<% provide(:subtitle, "タグから検索します") %>
+<% provide(:tag, "タグ一覧") %>
+<% provide(:blog, "current") %>
+<% provide(:search, "current") %>
+<main>
+  <div class="maincol">
+    <div class="main-content">
+      <h1>タグから検索</h1>
+      <% if @article.present? %>
+        <h2>該当記事</h2>
+        <% @article.each do |article| %>
+          <%= link_to(article, {class: "article-a"}) do %>
+            <div class="article">
+              <div class="article-img">
+                <%= image_tag article.image_url(:content) if article.image.present? %>
+              </div>
+              <div class="article-about">
+                <h6><%= article.title %></h6>
+                <p class="time-tag">
+                  <span class="time"><%= l article.created_at, format: :index %></span>
+                  <span class="tag"><%= article.tag_list %></span>
+                </p>
+                <div class="article-text">
+                  <p><%= article.subtitle %></p>
+                </div>
+              </div>
+              <% if user_signed_in? %>
+                <%= link_to 'Edit', edit_article_path(article) %>
+                <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+      <h2>タグ一覧</h2>
+      <h4>クリックで絞り込み</h4><br/>
+      <p>
+        <% @tags.each do |tag| %>
+          <%= link_to "#{tag.name}(#{tag.taggings_count})", articles_search_url(tag: tag.name) %>
+          <br/>
+        <% end %>
+        <br>
+        <%= link_to 'ホームへ', root_path %>
+        <% if user_signed_in? %><%= link_to '記事を作成', new_article_path %><% end %>
+      </p>
+    </div>
+    <div class="sub-content">
+      <% if @article.present? %>
+        <h2>タグ一覧</h2>
+        <p><% @tags.each do |tag| %>
+          <%= link_to "#{tag.name}(#{tag.taggings_count})", articles_search_url(tag: tag.name) %>
+          <br/>
+        <% end %></p>
+      <% else %>
+        <h2>タグ検索</h2>
+        <p>タグ検索ができます！！</p>
+      <% end %>
+    </div>
+  </div>
+</main>

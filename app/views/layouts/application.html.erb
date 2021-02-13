@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-52T7SJGPVJ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-52T7SJGPVJ');
+    </script>
+    <meta charset="UTF-8">
+    <%= favicon_link_tag('favicon.ico') %>
+    <meta name="msapplication-TileImage" content="/assets/LA.png" />
+    <meta name="msapplication-TileColor" content="#abceff"/>
+    <meta name="theme-color" content="#89abed">
+    <meta name="viewport" content="width=device-width">
+    <%= yield(:meta) %>
+    <meta name="robots" content="<%= yield(:robots) %>">
+    <meta property="og:url" content="https://amiverse.net<%= yield(:url) %>" />
+    <meta property="og:title" content="<%= yield(:title) %>" />
+    <meta property="og:type" content="<%= yield(:type) %>">
+    <meta property="og:description" content="<%= yield(:subtitle) %>" />
+    <meta property="og:image" content="https://amiverse.net<%= yield(:smn) %>" />
+    <meta name="twitter:card" content="<%= yield(:card) %>" />
+    <meta name="twitter:site" content="<%= yield(:twitter_site) %>" />
+    <meta name="twitter:creator" content="<%= yield(:twitter_creater) %>" />
+    <meta property="og:site_name" content="Amiverse" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta name="format-detection" content="email=no,telephone=no,address=no">
+    <title><%= yield(:title) %> | Amiverse</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta name="description" content="<%= yield(:subtitle) %> | 本サイトでは商品紹介やゲーム解説、TWICE、BTSなどのK-POPアイドルの最新情報などを発信しております。" />
+    <meta name="keywords" content="<%= yield(:tag) %>, Minecraft, Spigot, BTS, TWICE, NiziU, FC, レビュー, AviUtl, プラグイン" />
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_pack_tag 'application' %>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Kosugi&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.5/swiper-bundle.css">
+    <%= javascript_pack_tag 'mcc' %>
+  </head>
+  <body>
+    <header>
+      <div class="header-top">
+        <div class="header-logo">
+          <%= link_to root_path, class:"a-logo" do %><h1>Amiverse.net</h1><% end %>
+        </div>
+        <div class="header-menu">
+          
+        </div>
+      </div>
+      <div class="header-list">
+        <ul>
+           <a href="/" style="color: #1FD7E4;" class="<%= yield(:home) %> list-1">
+            <li>
+                <%= image_tag "header-list/home.svg" %><br/>ホーム
+            </li>
+          </a>
+          <a href="/articles" style="color: #FB9F15;" class="<%= yield(:blog) %> list-2">
+            <li>
+              <%= image_tag "header-list/blog.svg" %><br/>ブログ
+            </li>
+          </a>
+          <a href="/la" style="color: #28DC50;" class="<%= yield(:la) %> list-3">
+            <li>
+              <%= image_tag "header-list/cube.svg" %><br/>LandArmy鯖
+            </li>
+          </a>
+          <a href="/others" style="color: #EC2BDF;"  class="<%= yield(:other) %> list-4">
+            <li>
+              <%= image_tag "header-list/other.svg" %><br/>その他
+            </li>
+          </a>
+        </ul>
+      </div>
+    </header>
+    <%= render 'nav' %>
+    <div class="content">
+      <p id="notice"><%= notice %></p>
+      <%= yield %>
+      <footer>
+        <input id="btn-mode" type="checkbox"> ダークモード(ゴミ)
+        <% if user_signed_in? %>
+        <%= link_to 'プロフィール変更', edit_user_registration_path %>
+        <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+        <% else %>
+        <% end %>
+        <p><a href="/others/privacy-policy">プライバシーポリシー</a>|<a href="/others/disclaimer">免責事項</a>|<a href="/others/map">サイトマップ</a><br/><small> © 2021 Amiverse</small></p>
+      </footer>
+    </div>
+    <%= javascript_pack_tag 'test' %>
+  </body>
+</html>

@@ -1,0 +1,6 @@
+ja:
+  time:
+    formats:
+      default: "%Y年%m月%d日 %H時%M分"
+      full: "%Y/%m/%d %H:%M:%S"
+      index: "%Y/%m/%d"

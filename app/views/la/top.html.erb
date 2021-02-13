@@ -1,0 +1,217 @@
+<% provide(:meta, "") %>
+<% provide(:robots, "index,follow") %>
+<% provide(:url, "/la") %>
+<% provide(:type, "website") %>
+<% provide(:card, "summary_large_image") %>
+<% provide(:twitter_site, "@sorata_toll") %>
+<% provide(:twitter_creater, "@sorata_toll") %>
+<% provide(:smn, "/assets/la/splatoon.png") %>
+<% provide(:title, "LA鯖TOP") %>
+<% provide(:subtitle, "LA鯖について紹介しています。") %>
+<% provide(:tag, "LA鯖, top") %>
+<% provide(:la, "current") %>
+<% provide(:top, "current") %>
+<!-- Swiper START -->
+<div class="swiper-container">
+	<!-- メイン表示部分 -->
+	<div class="swiper-wrapper">
+		<!-- 各スライド -->
+		<div class="swiper-slide">Main lobby</div>
+		<div class="swiper-slide">Guild</div>
+		<div class="swiper-slide">Splatoon2</div>
+		<div class="swiper-slide">First</div>
+        <div class="swiper-slide">Hub</div>
+		<div class="swiper-slide">City</div>
+		<div class="swiper-slide">Survival</div>
+		<div class="swiper-slide">Sub lobby</div>
+		<div class="swiper-slide">Portal</div>
+        <div class="swiper-slide">To lobby</div>
+		<div class="swiper-slide">Trade</div>
+		<div class="swiper-slide">Shop</div>
+		<div class="swiper-slide">Church</div>
+		<div class="swiper-slide">Night view</div>
+        <div class="swiper-slide">Waiting</div>
+		<div class="swiper-slide">Parkour</div>
+        <div class="swiper-slide">Quest</div>
+	</div>
+    <div class="swiper-button-prev" style="color: #87eff5"></div>
+	<div class="swiper-button-next" style="color: #87eff5"></div>
+    <div class="swiper-pagination"></div>
+</div>
+<!-- Swiper END -->
+<main>
+  <div class="maincol">
+      <div class="main-content">
+		<h1>La鯖</h1>
+		<h2>ようこそ!La鯖へ!</h2>
+		<p>サーバーに入る前にこのサイトでルールを確認してください。</p>
+		<h3>どんなサーバー？</h3>
+		<p>La鯖は経済、ミニゲーム、RPG、サバイバル、建築、パルクール、PvPなどなど...<br/>
+		様々な要素が詰まったオールインワンサーバーです！
+		</p>
+		<h3>運営時間</h3>
+		<p>運営の気まぐれで空いているときと空いていない時があります。<br/>
+		基本開いてますがマイクラを起動する前にこのサイトで確認することをおすすめします。
+		</p>
+		<h4>現在の稼働状況</h4>
+		<p>
+		アドレス:<%= @ms.address %><br/>
+		ポート:<%= @ms.port %><br/>
+		オンライン:<%= @ms.online %><br/>
+		<% if @ms.online %>
+		バージョン:<%= @ms.version %><br/>
+		プレイヤー数:<%= @ms.current_players %>人<br/>
+		最大人数:<%= @ms.max_players %>人<br/>
+		レイテンシ:<%= @ms.latency %>ms<br/>
+		<% motd = @ms.motd %>
+		MOTD:<%= motd.gsub(/§a|§b|§c|§d|§e|§f|§k|§l|§m|§n|§o|§r|§1|§2|§3|§4|§5|§6|§7|§8|§9|§0/, '' => '') %>
+		<% end %><br/>
+		<script>
+			var yourMOTD = "§d§lnerd.nu§8: §6§oCreative Rev 28";
+			var newMOTD = yourMOTD.replaceColorCodes();
+			console.log(newMOTD);
+			document.open();
+			document.write(newMOTD);
+			document.close();
+		</script>
+		</p>
+		<!--<iframe src="https://mc.erinn.biz/intl/polling.html.php?server_addr=amiverse.net" style="width:100%;height:80px;border:none;overflow:hidden;overflow-x:hidden;overflow-y:hidden;"></iframe>
+    	<br/>
+    	<a href="http://tt0.link/minecraft/"><img src="http://tt0.link/minecraft/others/servercheck/img/default.php?ip=amiverse.net&port=25565" style="width:100%;"></a>
+    	<br/>
+    	<a href="https://minecraft.jp/servers/amiverse.net"><img src="https://minecraft.jp/servers/amiverse.net/banner/2/560x95.png" style="width:100%;"/></a>
+    	<br/>-->
+    </div>
+  </div>
+</main>
+<style>
+/* 全体のスタイル */
+.swiper-wrapper {
+	width: auto;
+	height: auto;
+}
+/* 全スライド共通スタイル */
+.swiper-slide {
+	color: #ffffff;
+	width: auto;
+    height: auto ;
+    padding: 30% 0%;
+	text-align: center;
+    line-height: 0;
+	font-family: "nagomi";
+	font-size : 30px;
+	background-color: #E4A3E0;
+}
+/* 4の倍数＋1枚目のスライドのスタイル（1枚目、5枚目…）17枚のディスプレイ写真 */
+.swiper-slide:nth-child(1) {
+    background: center url(/assets/la/mainlobby.png);
+    background-size: cover;
+    background-color: #E4A3E0;
+}
+.swiper-slide:nth-child(2) {
+    background: url(/assets/la/quest-guild.png);
+    background-size: cover;
+	background-color: #E4A3E0;
+}
+.swiper-slide:nth-child(3) {
+    background: url(/assets/la/splatoon.png);
+    background-size: cover;
+	background-color: #E4A3E0;
+}
+.swiper-slide:nth-child(4) {
+    background: url(/assets/la/firstpoint.png);
+    background-size: cover;
+	background-color: #E4A3E0;
+}
+.swiper-slide:nth-child(5) {
+    background: url(/assets/la/firstplace.png);
+    background-size: cover;
+	background-color: #E4A3E0;
+}
+.swiper-slide:nth-child(6) {
+    background: url(/assets/la/tower.png);
+    background-size: cover;
+	background-color: #E4A3E0;
+}
+.swiper-slide:nth-child(7) {
+    background: url(/assets/la/sava.png);
+    background-size: cover;
+	background-color: #E4A3E0;
+}
+.swiper-slide:nth-child(8) {
+    background: url(/assets/la/lobby.png);
+    background-size: cover;
+	background-color: #E4A3E0;
+}
+.swiper-slide:nth-child(9) {
+    background: url(/assets/la/portal-under.png);
+    background-size: cover;
+	background-color: #E4A3E0;
+}
+.swiper-slide:nth-child(10) {
+    background: url(/assets/la/portal.png);
+    background-size: cover;
+	background-color: #E4A3E0;
+}
+.swiper-slide:nth-child(11) {
+    background: url(/assets/la/mainlobby-load.png);
+    background-size: cover;
+	background-color: #E4A3E0;
+}
+.swiper-slide:nth-child(12) {
+    background: url(/assets/la/quest-shop.png);
+    background-size: cover;
+	background-color: #E4A3E0;
+}
+.swiper-slide:nth-child(13) {
+    background: url(/assets/la/quest-first.png);
+    background-size: cover;
+	background-color: #E4A3E0;
+}
+.swiper-slide:nth-child(14) {
+    background: url(/assets/la/quest-bridge.png);
+    background-size: cover;
+	background-color: #E4A3E0;
+}
+.swiper-slide:nth-child(15) {
+    background: url(/assets/la/asure.png);
+    background-size: cover;
+	background-color: #E4A3E0;
+}
+.swiper-slide:nth-child(16) {
+    background: url(/assets/la/asure-under.png);
+    background-size: cover;
+	background-color: #E4A3E0;
+}
+.swiper-slide:nth-child(17) {
+    background: url(/assets/la/watch.png);
+    background-size: cover;
+	background-color: #E4A3E0;
+}
+.swiper-pagination-bullet-active {
+    background-color: #87eff5;
+}
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.5/swiper-bundle.min.js"></script>
+
+<script>
+var mySwiper = new Swiper('.swiper-container', {
+    speed: 500,
+	autoplay: {
+		delay: 3000,
+		stopOnLastSlide: false,
+		disableOnInteraction: false,
+		reverseDirection: false
+	},
+	navigation: {
+		nextEl: '.swiper-button-next',
+		prevEl: '.swiper-button-prev'
+	},
+	pagination: {
+		el: '.swiper-pagination',
+		type: 'bullets',
+		clickable: true
+	}
+});
+</script>

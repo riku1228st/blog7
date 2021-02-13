@@ -1,0 +1,126 @@
+<% provide(:meta, "") %>
+<% provide(:robots, "index,follow") %>
+<% provide(:url, "/articles") %>
+<% provide(:type, "website") %>
+<% provide(:card, "summary_large_image") %>
+<% provide(:twitter_site, "@sorata_toll") %>
+<% provide(:twitter_creater, "@sorata_toll") %>
+<% provide(:smn, "/assets/la/splatoon.png") %>
+<% provide(:title, "ブログTOP") %>
+<% provide(:subtitle, "おすすめ記事です。ブログを書いています。") %>
+<% provide(:tag, "ブログ, blog") %>
+<% provide(:blog, "current") %>
+<% provide(:top, "current") %>
+<main>
+  <div class="maincol">
+    <div class="main-content">
+      <h1>ブログ</h1>
+      <h2>最新の記事</h2>
+        <% if @new_article.present? %>
+        <% @new_article.each do |article| %>
+        <%= link_to(article, {class: "article-a"}) do %>
+        <div class="article">
+        <div class="article-img">
+        <%= image_tag article.image_url(:content) if article.image.present? %>
+        </div>
+        <div class="article-about">
+        <h6><%= article.title %></h6>
+        <p class="time-tag">
+        <span class="time"><%= l article.created_at, format: :index %></span>
+        <span class="tag"><%= article.tag_list %></span>
+        </p>
+        <div class="article-text">
+        <p><%= article.subtitle %></p>
+        </div>
+        </div>
+        <% if user_signed_in? %>
+        <%= link_to 'Edit', edit_article_path(article) %>
+        <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+        </div>
+        <% end %>
+        <% end %>
+      　<% end %>
+        <p><a href="/articles/index">もっと見る</a></p>
+        <h1>おすすめの記事</h1>
+        <h2>マイクラ #minecraft</h2>
+        <% if @minecraft.present? %>
+          <% @minecraft.each do |article| %>
+            <%= link_to(article, {class: "article-a"}) do %>
+              <div class="article">
+                <div class="article-img">
+                  <%= image_tag article.image_url(:content) if article.image.present? %>
+                </div>
+                <div class="article-about">
+                  <h6><%= article.title %></h6>
+                  <p class="time-tag">
+                    <span class="time"><%= l article.created_at, format: :index %></span>
+                    <span class="tag"><%= article.tag_list %></span>
+                  </p>
+                  <div class="article-text">
+                      <p><%= article.subtitle %></p>
+                  </div>
+                </div>
+                <% if user_signed_in? %>
+                  <%= link_to 'Edit', edit_article_path(article) %>
+                  <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %>
+                <% end %>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
+        <h2>AviUtl #aviutl</h2>
+        <% if @aviutl.present? %>
+          <% @aviutl.each do |article| %>
+            <%= link_to(article, {class: "article-a"}) do %>
+              <div class="article">
+                <div class="article-img">
+                  <%= image_tag article.image_url(:content) if article.image.present? %>
+                </div>
+                <div class="article-about">
+                  <h6><%= article.title %></h6>
+                  <p class="time-tag">
+                    <span class="time"><%= l article.created_at, format: :index %></span>
+                    <span class="tag"><%= article.tag_list %></span>
+                  </p>
+                  <div class="article-text">
+                      <p><%= article.subtitle %></p>
+                  </div>
+                </div>
+                <% if user_signed_in? %>
+                  <%= link_to 'Edit', edit_article_path(article) %>
+                  <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %>
+                <% end %>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
+        <h2>WEB制作 #web</h2>
+        <% if @web.present? %>
+          <% @web.each do |article| %>
+            <%= link_to(article, {class: "article-a"}) do %>
+              <div class="article">
+                <div class="article-img">
+                  <%= image_tag article.image_url(:content) if article.image.present? %>
+                </div>
+                <div class="article-about">
+                  <h6><%= article.title %></h6>
+                  <p class="time-tag">
+                    <span class="time"><%= l article.created_at, format: :index %></span>
+                    <span class="tag"><%= article.tag_list %></span>
+                  </p>
+                  <div class="article-text">
+                      <p><%= article.subtitle %></p>
+                  </div>
+                </div>
+                <% if user_signed_in? %>
+                  <%= link_to 'Edit', edit_article_path(article) %>
+                  <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %>
+                <% end %>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
+    </div>
+  </div>
+</main>
