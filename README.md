@@ -1,5 +1,15 @@
 # README
 
+* Ruby Version 3.0.0
+* Rails Version 6.0.3.5
+
+## 2/13
+残すところothers各ページのみ。
+
+
+
+
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
