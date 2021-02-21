@@ -49,15 +49,7 @@
         <% end %>
       <% end %>
       <h2>LA鯖のニュース #la_news</h2>
-      <% if @lainfo.online %>
-      <p>
-        サーバーは現在<span style="color: rgb(15, 255, 95);">●オンライン</span>で<%= @lainfo.current_players %>人がプレイ中です。
-      </p>
-      <% else %>
-      <p>
-        サーバーは現在<span style="color: rgb(255, 27, 90);">×オフライン</span>です。
-      </p>
-		  <% end %>
+      <p>現在のサーバー状態は<a href="/la">こちら</a>から確認出来ます。</p>
       <% if @la_news.present? %>
         <% @la_news.each do |article| %>
           <%= link_to(article, {class: "article-a"}) do %>

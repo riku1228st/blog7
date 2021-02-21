@@ -53,7 +53,11 @@
 		<p>運営の気まぐれで空いているときと空いていない時があります。<br/>
 		基本開いてますがマイクラを起動する前にこのサイトで確認することをおすすめします。
 		</p>
-		<h4>現在の稼働状況</h4>
+		<% if @ms.online %>
+			<h4>現在の稼働状況は<span style="color: rgb(15, 255, 95);">●オンライン</span>で<%= @lainfo.current_players %>人がプレイ中です。</h4>
+		<% else %>
+			<h4>現在の稼働状況は<span style="color: rgb(255, 27, 90);">×オフライン</span>です。</h4>
+		<% end %>
 		<p>
 		アドレス:<%= @ms.address %><br/>
 		ポート:<%= @ms.port %><br/>
@@ -66,14 +70,14 @@
 		<% motd = @ms.motd %>
 		MOTD:<%= motd.gsub(/§a|§b|§c|§d|§e|§f|§k|§l|§m|§n|§o|§r|§1|§2|§3|§4|§5|§6|§7|§8|§9|§0/, '' => '') %>
 		<% end %><br/>
-		<script>
+		<!--<script>
 			var yourMOTD = "§d§lnerd.nu§8: §6§oCreative Rev 28";
 			var newMOTD = yourMOTD.replaceColorCodes();
 			console.log(newMOTD);
 			document.open();
 			document.write(newMOTD);
 			document.close();
-		</script>
+		</script>-->
 		</p>
 		<!--<iframe src="https://mc.erinn.biz/intl/polling.html.php?server_addr=amiverse.net" style="width:100%;height:80px;border:none;overflow:hidden;overflow-x:hidden;overflow-y:hidden;"></iframe>
     	<br/>
